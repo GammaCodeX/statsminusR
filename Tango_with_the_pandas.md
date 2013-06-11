@@ -38,9 +38,9 @@ In[1]:
     For more information, type 'help(pylab)'.
 
 
-In[19]:
+In[2]:
 ```
-import pandas as pa
+import pandas as pd
 import numpy as np
 import scipy as sp
 import scipy.special as spec
@@ -77,21 +77,44 @@ Fordelingsfunktionen er den kumulerede tæthedsfunktion:
 
 #### Binomial fordeling
 
-* Der skal være n uafhængige forsøg (n er et heltal), hvor n er konstant.
-* I hvert enkelt forsøg kan udfaldet være success eller fiasko.
-* Sansynlighed for succes er p (og er den samme for alle n forsøg) (sandsynligheden for fiasko er 1-p)
 
-X: antal succes blandt n forsøg. (x er stokastisk variable)
+<ul>
+    <li>There has to be <i>n</i> independant trials, where <i>n</i> is a
+constant integer.</li>
+    <li>Each trial can produce either succes or failure</li>
+    <li>The probability of succes is <i>p</i>, and the probability of failure
+<i>1-p</i>. <i>p</i> is constant for all trials.</li>
+</ul>
 
-(n (over) x) på hvormange måde kan man vælge x ud af n.
+X:           Amount of succes' in <i>n</i> trials.
 
-Tæthedsfunktion for binomial : hov, sov.
-Eksempel:
+binom(n,x):  Ways to chose <i>x</i> from <i>n</i>.
 
-X: antal farveblinde
+Ex:
 
-P(X=1)
-Ud af 3, hvor én er farveblind.
+We wanna know the probability, that out of 50 people, 4 are colorblind.
+The probability of being colorblind is 4%.
+
+X: Amount of colorblind people.
+
+P(X = 4)
+
+In[7]:
+```
+x = 4 
+n = 50
+p = .04
+
+spec.binom(n,x)*pow(p,x)*pow((1-p),(n-x)) #The sneaky thing about programming is having both an example, and the actual formula.
+```
+
+
+
+    0.090159319083132725
+
+
+
+So a little over 9% chance. Huh.
 
 
 #### Den hypergeometriske fordeling
